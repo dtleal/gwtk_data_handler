@@ -1,11 +1,12 @@
 import logging
-import application
 import sys
+
+import application
 
 logging.basicConfig(
     stream=sys.stdout,
-    format='%(asctime)s %(filename)s %(funcName)s: %(message)s',
-    level=logging.INFO
+    format="%(asctime)s %(filename)s %(funcName)s: %(message)s",
+    level=logging.INFO,
 )
 
 app = application.initialize()

@@ -13,11 +13,11 @@ class OderDetailsModel(Model):
     oder_id = Column(
         Integer,
         ForeignKey("orders.order_id", ondelete="CASCADE"),
-        index=True,        
+        index=True,
     )
     pizza_id = Column(
         String,
         ForeignKey("pizzas.pizza_id", ondelete="CASCADE"),
-        index=True,        
+        index=True,
     )
     quantity = Column(Integer)
