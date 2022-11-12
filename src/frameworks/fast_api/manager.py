@@ -3,6 +3,8 @@ import sys
 
 from fastapi import APIRouter, FastAPI
 
+from interface_adapters.routes.v1.upload_csv import csv_route
+
 logging.basicConfig(
     stream=sys.stdout,
     format="%(asctime)s %(filename)s %(funcName)s: %(message)s",
@@ -29,7 +31,7 @@ class FastApiManager:
         """Fast API routes"""
         self._logger.info("Adding routes...")
         api_router = APIRouter()
-        # api_router.include_router(first_example.router, prefix="/v1", tags=["Example"])
+        api_router.include_router(csv_route, prefix="/v1", tags=["Example"])
         self._app.include_router(api_router)
 
     def get_instance(self) -> FastAPI:
