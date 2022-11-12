@@ -18,12 +18,14 @@ db_up:
 db_create_tables:
 	alembic upgrade head
 
+db_insert_data:
+	python -m scripts.database_insert
+
 run:
-	export HOST="localhost" && \
-	export PORT="5435" && \
-	export DATABASE="postgres" && \
-	export USER="postgres" && \
-	export PASSWORD="postgres" && \
+	export DB_HOST="localhost" && \
+	export DB_DATABASE="db_pizza_place" && \
+	export DB_USER="postgres" && \
+	export DB_PASSWORD="postgres" && \
 	poetry run gunicorn -w 2 -k uvicorn.workers.UvicornWorker --timeout 120 --chdir src main:app
 
 debug:

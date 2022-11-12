@@ -1,7 +1,7 @@
 # pylint: disable=R0801,R0902
 from __future__ import annotations
 
-from sqlalchemy import Column, Integer, Date, Time
+from sqlalchemy import Column, Date, Integer, Time
 
 from interface_adapters.data.models.base import Model
 

@@ -1099,7 +1099,7 @@ test = ["enum34", "ipaddress", "mock", "pywin32", "wmi"]
 name = "psycopg2"
 version = "2.9.5"
 description = "psycopg2 - Python-PostgreSQL Database Adapter"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -1870,7 +1870,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "29e9acff43ef84ef11db944193fa5c06f08f3ee71fb71e888d1c768519a31421"
+content-hash = "ee4f3399c17bf726f88cd2b3aaf93eb652d52b4574544ee29074e39b55d9eccd"
 
 [metadata.files]
 alembic = [

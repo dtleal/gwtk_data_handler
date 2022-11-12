@@ -1,8 +1,6 @@
 # pylint: disable=E0213
-from datetime import datetime, timezone
 from typing import Any
 
-from sqlalchemy import Column, DateTime
 from sqlalchemy.ext.declarative import declarative_base, declared_attr
 
 from utils import algorithms
@@ -16,15 +14,6 @@ class Model(_Base):
 
     __abstract__ = True
     __name__: str
-
-    _created_at = Column(
-        DateTime(timezone=True), default=lambda: datetime.now(timezone.utc)
-    )
-    _updated_at = Column(
-        DateTime(timezone=True),
-        default=lambda: datetime.now(timezone.utc),
-        onupdate=lambda: datetime.now(timezone.utc),
-    )
 
     @declared_attr
     def __tablename__(cls) -> str:

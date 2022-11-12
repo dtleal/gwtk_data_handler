@@ -1,8 +1,9 @@
-from fastapi import FastAPI
-from frameworks.fast_api.manager import FastApiManager
-from frameworks.container import FrameworkContainer
 from dependency_injector.wiring import Provide, inject
+from fastapi import FastAPI
+
+from frameworks.container import FrameworkContainer
 from frameworks.database.postgres_manager import PostgresqlManager
+from frameworks.fast_api.manager import FastApiManager
 
 
 def initialize() -> FastAPI:
@@ -14,7 +15,11 @@ def initialize() -> FastAPI:
         __initialize_framework_container()
         return app.get_instance()
     except Exception as error:
-        raise("An excepetion has ocurred trying to initialize FastApi: ", error) from Exception
+        raise (
+            "An excepetion has ocurred trying to initialize FastApi: ",
+            error,
+        ) from Exception
+
 
 def __initialize_framework_container() -> None:
     container = FrameworkContainer()

@@ -25,7 +25,6 @@ def upgrade() -> None:
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('category', sa.Enum('Chicken', 'Classic', 'Supreme', 'Veggie', name='categoryenum'), nullable=True),
     sa.Column('ingredients', sa.String(), nullable=False),
-    sa.PrimaryKeyConstraint('pizza_type_id')
     )
     op.create_index(op.f('ix_pizza_types_pizza_type_id'), 'pizza_types', ['pizza_type_id'], unique=True)
     op.create_table('orders',
@@ -42,7 +41,7 @@ def upgrade() -> None:
     sa.Column('_updated_at', sa.DateTime(timezone=True), nullable=True),
     sa.Column('pizza_id', sa.String(), nullable=False),
     sa.Column('pizza_type_id', sa.String(), nullable=False),
-    sa.Column('size', sa.String(length=1), nullable=True),
+    sa.Column('size', sa.String(length=3), nullable=True),
     sa.Column('price', sa.DECIMAL(precision=7, scale=1), nullable=False),
     sa.ForeignKeyConstraint(['pizza_type_id'], ['pizza_types.pizza_type_id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('pizza_id')
@@ -54,7 +53,7 @@ def upgrade() -> None:
     sa.Column('order_details_id', sa.Integer(), nullable=False),
     sa.Column('order_id', sa.Integer(), nullable=False),
     sa.Column('pizza_id', sa.String(), nullable=False),
-    sa.Column('quantity', sa.String(length=1), nullable=True),
+    sa.Column('quantity', sa.String(length=3), nullable=True),
     sa.ForeignKeyConstraint(['order_id'], ['orders.order_id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['pizza_id'], ['pizzas.pizza_id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('order_details_id')

@@ -19,15 +19,15 @@ class ConnectionUnavailable(RuntimeError):
     """Exception used to signal that a connection has not been established yet"""
 
 
-class PostgresqlManager():
+class PostgresqlManager:
     """Postgres implementation for single connection"""
 
     def __init__(self):
-        self._host: str = os.environ.get("HOST")
-        self._port: str = os.environ.get("PORT")
-        self._database: str = os.environ.get("DATABASE")
-        self._user: str = os.environ.get("USER")
-        self._password: str = os.environ.get("PASSWORD")
+        self._host: str = os.environ.get("DB_HOST")
+        self._port: str = os.environ.get("DB_PORT")
+        self._database: str = os.environ.get("DB_DATABASE")
+        self._user: str = os.environ.get("DB_USER")
+        self._password: str = os.environ.get("DB_PASSWORD")
         self._engine: AsyncEngine = None
         self._session_factory: async_scoped_session = None
         self._logger = logging.getLogger(
@@ -91,4 +91,3 @@ class PostgresqlManager():
             host=self._host,
             port=self._port,
         )
-
