@@ -20,7 +20,7 @@ IMPORTANT.: See the `makefile` (please, use make style to get a better code)to g
 
 2. Using Makefile, please run as following
     1. make db_up (this will create our awesome postgres database)
-    2. make db_create_tables (this will create our tables using alembic)
+    2. make db_create_tables (wait untill database is online - this will create our tables using alembic)
     3. make db_insert_data (this will persist our CSV files into database)
 
 3. Now we have our database setting up and stored, lets run our application
