@@ -9,6 +9,7 @@ class FrameworkContainer(containers.DeclarativeContainer):
     wiring_config = containers.WiringConfiguration(
         modules=[
             "interface_adapters.routes.v1.upload_csv",
+            "interface_adapters.routes.health_check",
         ],
     )
 
