@@ -15,7 +15,7 @@ In this project we have: FastAPI, Dependency-Injector, SqlAlchemy, Poetry, Docke
 IMPORTANT.: See the `makefile` (please, use make style to get a better code)to get to know some alias and follow the commands
 
 1. We use poetry to deal with dependency management, so take a look in poetry documentation for more details. To create an environment, run:
-    1. poetry shell - create/actiate a new environment
+    1. poetry shell - create/activate a new environment
     2. poetry install - install project dependencies
 
 2. Using Makefile, please run as following
