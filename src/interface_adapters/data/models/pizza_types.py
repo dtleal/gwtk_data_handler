@@ -9,6 +9,8 @@ from interface_adapters.data.models.base import Model
 
 
 class PizzaTypesEnum(enum.Enum):
+    """Pizza type enum"""
+
     CHICKEN = "Chicken"
     CLASSIC = "Classic"
     SUPREME = "Supreme"

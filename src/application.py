@@ -15,10 +15,10 @@ def initialize() -> FastAPI:
         __initialize_framework_container()
         return app.get_instance()
     except Exception as error:
-        raise (
+        raise Exception(
             "An excepetion has ocurred trying to initialize FastApi: ",
             error,
-        ) from Exception
+        ) from error
 
 
 def __initialize_framework_container() -> None:
