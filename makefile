@@ -15,6 +15,9 @@ style:
 db_up:
 	docker-compose up --build --force-recreate -d
 
+db_create_tables:
+	alembic upgrade head
+
 run:
 	export HOST="localhost" && \
 	export PORT="5435" && \

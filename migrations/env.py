@@ -10,7 +10,6 @@ from sqlalchemy.engine.url import URL
 
 sys.path.append("./src")
 
-from interface_adapters.data import models
 from interface_adapters.data.models.base import Model
 
 config = context.config
@@ -28,11 +27,11 @@ target_metadata = Model.metadata
 def get_db_uri() -> str:
     return URL.create(
         drivername="postgresql",
-        username=env.str("USER", "postgres"),
-        password=env.str("PASSWORD", "postgres"),
-        host=env.str("HOST", "localhost"),
-        port=env.str("PORT", "5435"),
-        database=env.str("DATABASE", "postgres"),
+        username=env.str("DB_USER", "postgres"),
+        password=env.str("DB_PASSWORD", "postgres"),
+        host=env.str("DB_HOST", "localhost"),
+        port=env.str("DB_PORT", "5435"),
+        database=env.str("DB_DATABASE", "db_pizza_place"),
     )
 
 

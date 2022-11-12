@@ -1,2 +1,2 @@
-CREATE DATABASE gtk_test;
-GRANT ALL PRIVILEGES ON gtk_test TO postgres;
+CREATE DATABASE db_pizza_place;
+GRANT ALL PRIVILEGES ON db_pizza_place TO postgres;
