@@ -4,8 +4,8 @@ import sys
 from fastapi import APIRouter, FastAPI
 
 from interface_adapters.routes.health_check import system_state_router
-from interface_adapters.routes.v1.upload_csv import csv_route
 from interface_adapters.routes.v1.get_order_details import order_details_route
+from interface_adapters.routes.v1.upload_csv import csv_route
 
 logging.basicConfig(
     stream=sys.stdout,

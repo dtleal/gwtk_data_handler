@@ -1,6 +1,4 @@
 # pylint: disable=R0801,R0902
-from typing import Any
-
 from pydantic.dataclasses import dataclass
 
 from domain.interfaces.input_port import InputPort
@@ -21,4 +19,3 @@ class OrderDetailsOutputPort(InputPort):
     order_id: int
     pizza_id: str
     quantity: int
-

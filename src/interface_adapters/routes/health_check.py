@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 
-
 system_state_router = APIRouter(tags=["System State"])
 
 
