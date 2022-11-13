@@ -15,10 +15,12 @@ app = application.initialize()
 @app.on_event("startup")
 async def startup_event() -> None:
     """FastAPI App startup hook."""
+    await application.startup()
     logging.info("FastAPI startup")
 
 
 @app.on_event("shutdown")
-def shutdown_event() -> None:
+async def shutdown_event() -> None:
     """FastAPI App shutdown hook."""
+    await application.shutdown()
     logging.info("FastAPI shutdown")

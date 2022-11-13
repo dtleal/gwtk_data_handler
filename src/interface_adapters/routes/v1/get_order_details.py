@@ -26,9 +26,9 @@ async def get_order_details(
 ) -> GetOrderDetailsOutputDTO:
     """Route to create a new table into postgres from a csv file"""
     try:
-        order_input_port = OrderDetailsInputPort(order_details_id=order_details_id)
+        input_port = OrderDetailsInputPort(order_details_id=order_details_id)
 
-        output_use_case = await get_order_details_use_case(order_input_port=order_input_port)
+        output_use_case = await get_order_details_use_case(input_port=input_port)
 
         return GetOrderDetailsOutputDTO(
             order_details_id=output_use_case.order_details_id,
