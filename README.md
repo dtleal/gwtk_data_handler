@@ -2,6 +2,9 @@
 
 An awesome Pizza Place
 
+# API Documentation
+We use swagger to documentation our API. The swagger provides all information we need to use our routes
+
 ## How its work
 This project is a Clean-Architecture based. We have 3 important layers
 1. Frameworks: responsible for all interactions with the external world
