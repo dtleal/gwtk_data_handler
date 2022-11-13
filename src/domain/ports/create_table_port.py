@@ -8,7 +8,7 @@ from domain.interfaces.input_port import InputPort
 
 @dataclass
 class CreateTableFromCSVPort(InputPort):
-    """Object to describe a Address."""
+    """Object to describe a csv file."""
 
     csv_filename: str
     data_frame: Any
@@ -16,7 +16,7 @@ class CreateTableFromCSVPort(InputPort):
 
 @dataclass
 class CreateTableFromCSVOutputPort(InputPort):
-    """Object to describe a Address."""
+    """Object to describe a csv file."""
 
     operation: str
     result: Any

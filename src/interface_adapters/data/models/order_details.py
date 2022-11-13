@@ -3,11 +3,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, desc, func, select, text
 from sqlalchemy.engine import Result
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.sql.expression import Select, select
+from sqlalchemy.sql.expression import Select
 
+from domain.ports.get_most_sold_port import GetMostSoldOutputPort
 from interface_adapters.data.models.base import Model
 
 
@@ -35,3 +36,26 @@ class OrderDetailsModel(Model):
         query: Select = select(cls).filter(cls.order_details_id == order_details_id)
         result: Result = await session.execute(query)
         return result.scalars().first()
+
+    @classmethod
+    async def get_most_sold(
+        cls, session: AsyncSession,
+    ) -> GetMostSoldOutputPort:
+        """Get most selled piza."""
+        try:
+            query = text("SELECT od.pizza_id, COUNT(od.pizza_id) as pizza_sold, p.price, \
+            pt.name, pt.category FROM order_details od join pizzas p on od.pizza_id = p.pizza_id \
+            join pizza_types pt on pt.pizza_type_id = p.pizza_type_id group by od.pizza_id, p.size, \
+            p.price, pt.name, pt.category order by pizza_sold DESC limit 1;")
+            resultset: Result = await session.execute(query)
+            result = resultset.fetchall()
+            return GetMostSoldOutputPort(
+                pizza_id=result[0][0],
+                pizza_sold=result[0][1],
+                price=result[0][2],
+                name=result[0][3],
+                category=result[0][4],
+            )
+            
+        except Exception as e:
+            print('Error: ', e)
