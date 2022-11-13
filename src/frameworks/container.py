@@ -3,7 +3,7 @@ from dependency_injector import containers, providers
 from domain.use_cases.create_table_from_csv import CreateTableFromCSVUseCase
 from domain.use_cases.get_order_details import GetOrderDetailsByIdUseCase
 from frameworks.database.postgres_manager import PostgresqlManager
-from interface_adapters.data.models.order_details import OrderDetailsModel
+from interface_adapters.data.repositories.order_details import OrderDetailsRepository
 
 
 class FrameworkContainer(containers.DeclarativeContainer):
@@ -23,8 +23,12 @@ class FrameworkContainer(containers.DeclarativeContainer):
         CreateTableFromCSVUseCase, db_service=database_manager
     )
 
+    # Repositories
+    order_details_repository: OrderDetailsRepository = providers.Factory(
+        OrderDetailsRepository, database_service=database_manager
+    )
+
+    # Use cases
     get_order_details_use_case: GetOrderDetailsByIdUseCase = providers.Factory(
-        GetOrderDetailsByIdUseCase,
-        db_service=database_manager,
-        order_details_model=OrderDetailsModel,
+        GetOrderDetailsByIdUseCase, order_details_repository=order_details_repository
     )
