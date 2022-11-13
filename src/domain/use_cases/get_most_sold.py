@@ -11,4 +11,3 @@ class GetMostSoldUseCase(UseCase):
 
     async def __call__(self) -> GetMostSoldOutputPort:
         return await self._get_most_sold_repository.get_most_sold()
-

@@ -1,4 +1,7 @@
-from domain.ports.get_most_sold_port import GetMostSoldOutputPort
+from domain.ports.get_most_sold_port import (
+    GetMostSoldOutputPort,
+    GetMostSoldPerDayOutputPort,
+)
 from frameworks.database.postgres_manager import PostgresqlManager
 from interface_adapters.data.models.order_details import OrderDetailsModel
 
@@ -17,3 +20,10 @@ class GetMostSoldRepository:
                 return result
         return await result
 
+    async def get_most_sold_per_day(self) -> GetMostSoldPerDayOutputPort:
+        """Get most solded pizza."""
+        await self._db.connect()
+        async with self._db.session() as session:
+            if result := await OrderDetailsModel.get_most_sold_per_day(session):
+                return result
+        return await result

@@ -69,7 +69,7 @@ init-hook = "import sys; sys.path.append('./src'), sys.path.append('./tests')"
 fail-under = "9.5"
 
 [tool.pylint.format]
-max-line-length = "100"
+max-line-length = "110"
 
 [tool.pylint.messages_control]
 disable = ["C0114", "C0116", "C0301", "R0903", "W1203"]

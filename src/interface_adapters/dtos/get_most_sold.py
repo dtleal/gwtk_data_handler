@@ -10,3 +10,9 @@ class GetMostSoldOutputDTO(BaseModel):
     price: float = Field(default=None)
     name: str = Field(default=None)
     category: str = Field(default=None)
+
+
+class GetMostSoldPerDayOutputDTO(BaseModel):
+    """GetMostSoldPerDay DTO"""
+
+    result: list = Field(default=None)

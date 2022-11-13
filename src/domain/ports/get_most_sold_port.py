@@ -13,3 +13,10 @@ class GetMostSoldOutputPort(InputPort):
     price: float
     name: str
     category: str
+
+
+@dataclass
+class GetMostSoldPerDayOutputPort(InputPort):
+    """Object to describe a the result of most solded pizza."""
+
+    result: list
